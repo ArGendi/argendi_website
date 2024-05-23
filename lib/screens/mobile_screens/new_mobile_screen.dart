@@ -73,17 +73,17 @@ class _HomeScreenState extends State<NewMobileScreen> with TickerProviderStateMi
                 ),
               ),
             ),
-            ListTile(
-              onTap: (){
-                Navigator.pop(context);
-              },
-              title: const Text(
-                'New',
-                style: TextStyle(
-                  color: Colors.white
-                ),
-              ),
-            ),
+            // ListTile(
+            //   onTap: (){
+            //     Navigator.pop(context);
+            //   },
+            //   title: const Text(
+            //     'New',
+            //     style: TextStyle(
+            //       color: Colors.white
+            //     ),
+            //   ),
+            // ),
             ListTile(
               onTap: (){
                 Navigator.pop(context);

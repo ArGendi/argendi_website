@@ -2,6 +2,7 @@ import 'package:AG/screens/desktop_screens/about_screen.dart';
 import 'package:AG/screens/mobile_screens/about_screen.dart';
 import 'package:AG/screens/mobile_screens/contact_us_screen.dart';
 import 'package:AG/screens/mobile_screens/new_mobile_screen.dart';
+import 'package:AG/screens/mobile_screens/wheel_screen.dart';
 import 'package:AG/widgets_mobile/bottom.dart';
 import 'package:AG/widgets_mobile/header.dart';
 import 'package:AG/widgets_mobile/our_develop_process.dart';
@@ -140,25 +141,25 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
                 ),
               ),
             ),
-            ListTile(
-              onTap: (){
-                Navigator.pop(context);
-                Navigator.push(
-                  context, 
-                  PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) => const NewMobileScreen(),
-                      transitionDuration: Duration.zero,
-                      reverseTransitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              title: const Text(
-                'New',
-                style: TextStyle(
-                  color: Colors.white
-                ),
-              ),
-            ),
+            // ListTile(
+            //   onTap: (){
+            //     Navigator.pop(context);
+            //     Navigator.push(
+            //       context, 
+            //       PageRouteBuilder(
+            //           pageBuilder: (context, animation1, animation2) => const NewMobileScreen(),
+            //           transitionDuration: Duration.zero,
+            //           reverseTransitionDuration: Duration.zero,
+            //       ),
+            //     );
+            //   },
+            //   title: const Text(
+            //     'New',
+            //     style: TextStyle(
+            //       color: Colors.white
+            //     ),
+            //   ),
+            // ),
             ListTile(
               onTap: (){
                 Navigator.pop(context);
@@ -192,6 +193,25 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
               },
               title: const Text(
                 'About',
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: (){
+                Navigator.pop(context);
+                Navigator.push(
+                  context, 
+                  PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) => const WheelScreen(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              },
+              title: const Text(
+                'Sale',
                 style: TextStyle(
                   color: Colors.white
                 ),

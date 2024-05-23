@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:AG/screens/desktop_screens/about_screen.dart';
 import 'package:AG/screens/desktop_screens/new_browser_screen.dart';
 import 'package:AG/screens/home_screen.dart';
@@ -5,6 +7,7 @@ import 'package:AG/screens/mobile_screens/home_mobile_screen.dart';
 import 'package:AG/widgets_browser/bottom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsScreen extends StatefulWidget {
   const ContactUsScreen({super.key});
@@ -119,6 +122,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: GestureDetector(
           onTap: (){
             Navigator.popUntil(context, (route) => route.isFirst);
@@ -148,24 +152,24 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               ),
             ),
           ),
-          TextButton(
-            onPressed: (){
-              Navigator.push(
-                context, 
-                PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const NewScreen(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero,
-                ),
-              );
-            }, 
-            child: const Text(
-              "New",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ),
+          // TextButton(
+          //   onPressed: (){
+          //     Navigator.push(
+          //       context, 
+          //       PageRouteBuilder(
+          //           pageBuilder: (context, animation1, animation2) => const NewScreen(),
+          //           transitionDuration: Duration.zero,
+          //           reverseTransitionDuration: Duration.zero,
+          //       ),
+          //     );
+          //   }, 
+          //   child: const Text(
+          //     "New",
+          //     style: TextStyle(
+          //       color: Colors.grey,
+          //     ),
+          //   ),
+          // ),
           TextButton(
             onPressed: (){}, 
             child: const Text(
@@ -195,111 +199,207 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           ),
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Let's contact",
+          Stack(
+            children: [
+              Image.asset(
+                "images/FRANKFURT.png",
+                width: double.infinity,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              Opacity(
+                opacity: 0.8,
+                child: Container(
+                  width: double.infinity,
+                  height: 300,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 300,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Contact us",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 45,
+                        ),
+                      ),
+                      Text(
+                        "Our regional team are ready to help you, get in touch today.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async{
+                          try{
+                            final Uri params = Uri(
+                              scheme: 'mailto',
+                              path: 'projects@argendi.com',
+                            );
+                            if (await canLaunchUrl(params)) {
+                              await launchUrl(params);
+                            } else {
+                              print( 'Could not launch $params');
+                            }
+                          }
+                          catch(e){
+                            print(e);
+                          }
+                        },
+                        child: Text(
+                          "Email: projects@argendi.com",
                           style: TextStyle(
-                            fontSize: 24,
-                            //fontFamily: 'Rainly'
+                            color: Colors.white,
+                            //fontSize: 18,
                           ),
                         ),
-                        const Text('Enter your phone number or Email and feel free to tell me what you want. We will contact you as soone as possible.'),
-                        const SizedBox(height: 10,),
-                        Material(
-                          elevation: 10,
-                          child: SizedBox(
-                            width: screenSize.width * 0.45,
-                            height: 60,
-                            child: TextField(
-                              controller: phoneController,
-                              cursorColor: Colors.grey[700],
-                              decoration: const InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText: 'Phone number or Email address',
-                                contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10,),
-                        Material(
-                          elevation: 10,
-                          child: SizedBox(
-                            width: screenSize.width * 0.45,
-                            height: 60,
-                            child: TextField(
-                              controller: projectController,
-                              cursorColor: Colors.grey[700],
-                              decoration: const InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText: "How can I help you ?",
-                                contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                              ),
-                            ),
-                          ),
-                        ),
-                        if(textFieldError)
-                        const Text(
-                          'Enter both phone number/email address and your project idea',
-                          style: TextStyle(
-                            color: Colors.red
-                          ),
-                        ),
-                        const SizedBox(height: 20,),
-                        InkWell(
-                          onTap: (){
-                            onSendNow();
-                          },
-                          child: Container(
-                            width: screenSize.width * 0.45,
-                            height: 60,
-                            color: Colors.black,
-                            child: const Center(
-                              child: Text(
-                                'Send Now',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  //fontWeight: FontWeight.bold,
-                                  fontFamily: "Rainly",
-                                  color: Colors.white
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 50,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Material(
+                elevation: 8,
+                child: Image.asset(
+                  "images/germany.jpg",
+                  width: 300,
+                  height: 350,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 200,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    "AG",
+                    "Hamburg,",
                     style: TextStyle(
-                      //fontWeight: FontWeight.bold,
-                      fontFamily: "Rainly",
-                      fontSize: 350,
-                      color: Colors.grey.shade200,
+                      fontSize: 22,
                       height: 1
                     ),
                   ),
+                  Text(
+                    "Germany",
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                  Text(
+                    "Rudolf-Roß-Allee, Hamburg, Germany",
+                    style: TextStyle(),
+                  ),
+                  Text(
+                    "Call: (+49) 1573 1390129",
+                    style: TextStyle(),
+                  ),
                 ],
               ),
-            ),
+            ],
           ),
-          const Spacer(),
+          SizedBox(height: 30,),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text(
+          //           "Austria,",
+          //           style: TextStyle(
+          //             fontSize: 22,
+          //             height: 1
+          //           ),
+          //         ),
+          //         Text(
+          //           "Vienna",
+          //           style: TextStyle(
+          //             fontSize: 17,
+          //           ),
+          //         ),
+          //         Text(
+          //           "Any address in austria",
+          //           style: TextStyle(),
+          //         ),
+          //         Text(
+          //           "Call: (374) 2876 323",
+          //           style: TextStyle(),
+          //         ),
+          //       ],
+          //     ),
+          //     SizedBox(width: 200,),
+          //     Material(
+          //       elevation: 8,
+          //       child: Image.asset(
+          //         "images/austria.jpg",
+          //         width: 250,
+          //         height: 300,
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // SizedBox(height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Cairo,",
+                    style: TextStyle(
+                      fontSize: 22,
+                      height: 1
+                    ),
+                  ),
+                  Text(
+                    "Egypt",
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                  Text(
+                    "Maadi, Cairo, Egypt",
+                    style: TextStyle(),
+                  ),
+                  Text(
+                    "Call: (+20) 1227701988",
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+              SizedBox(width: 200,),
+              Material(
+                elevation: 8,
+                child: Image.asset(
+                  "images/egypt.jpg",
+                  width: 300,
+                  height: 350,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 100,),
+          //const Spacer(),
           const Bottom(
-            inContactUs: true,
+            //inContactUs: true,
           ),
         ],
       ),

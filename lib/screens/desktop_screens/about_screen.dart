@@ -55,24 +55,24 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
             ),
           ),
-          TextButton(
-            onPressed: (){
-              Navigator.push(
-                context, 
-                PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const NewScreen(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero,
-                ),
-              );
-            }, 
-            child: const Text(
-              "New",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ),
+          // TextButton(
+          //   onPressed: (){
+          //     Navigator.push(
+          //       context, 
+          //       PageRouteBuilder(
+          //           pageBuilder: (context, animation1, animation2) => const NewScreen(),
+          //           transitionDuration: Duration.zero,
+          //           reverseTransitionDuration: Duration.zero,
+          //       ),
+          //     );
+          //   }, 
+          //   child: const Text(
+          //     "New",
+          //     style: TextStyle(
+          //       color: Colors.grey,
+          //     ),
+          //   ),
+          // ),
           TextButton(
             onPressed: (){
               Navigator.push(
@@ -109,6 +109,7 @@ class _AboutScreenState extends State<AboutScreen> {
         ],
       ),
       body: ListView(
+        controller: scrollController,
         children: [
           Container(
             width: double.infinity,

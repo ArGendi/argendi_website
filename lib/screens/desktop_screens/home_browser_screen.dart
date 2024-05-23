@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'dart:async';
 
 import 'package:AG/screens/desktop_screens/about_screen.dart';
+import 'package:AG/screens/desktop_screens/contact_us_screen.dart';
 import 'package:AG/screens/desktop_screens/new_browser_screen.dart';
 import 'package:AG/screens/home_screen.dart';
 import 'package:AG/screens/mobile_screens/home_mobile_screen.dart';
@@ -162,31 +163,34 @@ class _HomeBrowserScreenState extends State<HomeBrowserScreen> with TickerProvid
               ),
             ),
           ),
+          // TextButton(
+          //   onPressed: (){
+          //     Navigator.push(
+          //       context, 
+          //       PageRouteBuilder(
+          //           pageBuilder: (context, animation1, animation2) => const NewScreen(),
+          //           transitionDuration: Duration.zero,
+          //           reverseTransitionDuration: Duration.zero,
+          //       ),
+          //     );
+          //   }, 
+          //   child: const Text(
+          //     "New",
+          //     style: TextStyle(
+          //       color: Colors.grey,
+          //     ),
+          //   ),
+          // ),
           TextButton(
             onPressed: (){
-              Navigator.push(
+               Navigator.push(
                 context, 
                 PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const NewScreen(),
+                    pageBuilder: (context, animation1, animation2) => const ContactUsScreen(),
                     transitionDuration: Duration.zero,
                     reverseTransitionDuration: Duration.zero,
                 ),
               );
-            }, 
-            child: const Text(
-              "New",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: (){
-                scrollController.animateTo(
-                  scrollController.position.maxScrollExtent, 
-                  duration: const Duration(seconds: 1), 
-                  curve: Curves.easeOut,
-                );
              }, 
             child: const Text(
               "Contact us",
@@ -226,112 +230,208 @@ class _HomeBrowserScreenState extends State<HomeBrowserScreen> with TickerProvid
           const SizedBox(height: 40,),
           const Center(
             child: Text(
-              'What are you waiting for ?',
+              'Our latest Projects',
               style: TextStyle(
                 fontSize: 60,
                 fontFamily: 'Rainly'
               ),
             ),
           ),
-          //const SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Let's contact",
-                        style: TextStyle(
-                          fontSize: 24,
-                          //fontFamily: 'Rainly'
-                        ),
-                      ),
-                      const Text('Enter your phone number and project idea and we will call you as soon as possible'),
-                      const SizedBox(height: 10,),
-                      Material(
-                        elevation: 10,
-                        child: SizedBox(
-                          width: screenSize.width * 0.45,
-                          height: 60,
-                          child: TextField(
-                            controller: phoneController,
-                            cursorColor: Colors.grey[700],
-                            decoration: const InputDecoration(
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              hintText: 'Phone number',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10,),
-                      Material(
-                        elevation: 10,
-                        child: SizedBox(
-                          width: screenSize.width * 0.45,
-                          height: 60,
-                          child: TextField(
-                            controller: projectController,
-                            cursorColor: Colors.grey[700],
-                            decoration: const InputDecoration(
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              hintText: "What's your project ?",
-                              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if(textFieldError)
-                        const Text(
-                          'Enter both phone number/email address and your project idea',
-                          style: TextStyle(
-                            color: Colors.red
-                          ),
-                        ),
-                      const SizedBox(height: 20,),
-                      InkWell(
-                        onTap: (){
-                          onSendNow();
-                        },
-                        child: Container(
-                          width: screenSize.width * 0.45,
-                          height: 60,
-                          color: Colors.black,
-                          child: const Center(
-                            child: Text(
-                              'Send Now',
-                              style: TextStyle(
-                                fontSize: 30,
-                                //fontWeight: FontWeight.bold,
-                                fontFamily: "Rainly",
-                                color: Colors.white
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                Image.asset(
+                  "images/p1_mockup.png",
+                  width: 400,
                 ),
-                Text(
-                  "AG",
-                  style: TextStyle(
-                    //fontWeight: FontWeight.bold,
-                    fontFamily: "Rainly",
-                    fontSize: 350,
-                    color: Colors.grey.shade200,
-                    height: 1
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      "BOD Evaluation SGC",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      "Provides a distinguished service for evaluating boards of \ndirectors and their affiliated committees",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        //fontSize: 18,
+                        //fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "NoonBrew",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      "NoonBrew is an organic iced tea blended with 19 superfoods to help \nboost your energy, focus, and digestion",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        //fontSize: 18,
+                        //fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "images/p3_mockup.png",
+                  width: 500,
                 ),
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  "images/sport_mockup.png",
+                  width: 400,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      "PowerWave Life",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      "Revolutionary workouts and nutrition plans now available\nvia our powerful and engaging PowerWave™ Fitness App.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        //fontSize: 18,
+                        //fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Flexible(
+          //         child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             const Text(
+          //               "Let's contact",
+          //               style: TextStyle(
+          //                 fontSize: 24,
+          //                 //fontFamily: 'Rainly'
+          //               ),
+          //             ),
+          //             const Text('Enter your phone number and project idea and we will call you as soon as possible'),
+          //             const SizedBox(height: 10,),
+          //             Material(
+          //               elevation: 10,
+          //               child: SizedBox(
+          //                 width: screenSize.width * 0.45,
+          //                 height: 60,
+          //                 child: TextField(
+          //                   controller: phoneController,
+          //                   cursorColor: Colors.grey[700],
+          //                   decoration: const InputDecoration(
+          //                     enabledBorder: InputBorder.none,
+          //                     focusedBorder: InputBorder.none,
+          //                     hintText: 'Phone number',
+          //                     contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //             const SizedBox(height: 10,),
+          //             Material(
+          //               elevation: 10,
+          //               child: SizedBox(
+          //                 width: screenSize.width * 0.45,
+          //                 height: 60,
+          //                 child: TextField(
+          //                   controller: projectController,
+          //                   cursorColor: Colors.grey[700],
+          //                   decoration: const InputDecoration(
+          //                     enabledBorder: InputBorder.none,
+          //                     focusedBorder: InputBorder.none,
+          //                     hintText: "What's your project ?",
+          //                     contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //             if(textFieldError)
+          //               const Text(
+          //                 'Enter both phone number/email address and your project idea',
+          //                 style: TextStyle(
+          //                   color: Colors.red
+          //                 ),
+          //               ),
+          //             const SizedBox(height: 20,),
+          //             InkWell(
+          //               onTap: (){
+          //                 onSendNow();
+          //               },
+          //               child: Container(
+          //                 width: screenSize.width * 0.45,
+          //                 height: 60,
+          //                 color: Colors.black,
+          //                 child: const Center(
+          //                   child: Text(
+          //                     'Send Now',
+          //                     style: TextStyle(
+          //                       fontSize: 30,
+          //                       //fontWeight: FontWeight.bold,
+          //                       fontFamily: "Rainly",
+          //                       color: Colors.white
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //       Text(
+          //         "AG",
+          //         style: TextStyle(
+          //           //fontWeight: FontWeight.bold,
+          //           fontFamily: "Rainly",
+          //           fontSize: 350,
+          //           color: Colors.grey.shade200,
+          //           height: 1
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           const Bottom(),
         ],
       ),
