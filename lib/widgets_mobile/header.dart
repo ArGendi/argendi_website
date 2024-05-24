@@ -23,7 +23,7 @@ class _HeaderState extends State<Header> with TickerProviderStateMixin{
           child: Image.asset(
             'images/developer_team.jpg',
             width: double.infinity,
-            height: 420,
+            height: 380,
             fit: BoxFit.cover,
           ),
         ),
@@ -45,7 +45,7 @@ class _HeaderState extends State<Header> with TickerProviderStateMixin{
           opacity: 0.8,
           child: Container(
             width: double.infinity,
-            height: 420,
+            height: 380,
             color: Colors.black,
             child: const Align(
           alignment: Alignment.center,
@@ -59,7 +59,7 @@ class _HeaderState extends State<Header> with TickerProviderStateMixin{
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 32,
+                    fontSize: 30,
                     height: 1.2
                   ),
                 ),

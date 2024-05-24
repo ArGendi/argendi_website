@@ -1,3 +1,5 @@
+
+
 import 'package:AG/screens/desktop_screens/about_screen.dart';
 import 'package:AG/screens/home_screen.dart';
 import 'package:AG/screens/mobile_screens/about_screen.dart';
@@ -7,6 +9,7 @@ import 'package:AG/widgets_mobile/bottom.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsMobileScreen extends StatefulWidget {
   const ContactUsMobileScreen({super.key});
@@ -209,100 +212,156 @@ class _ContactUsScreenState extends State<ContactUsMobileScreen> {
         foregroundColor: Colors.black,
         centerTitle: true,
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Let's contact",
-                    style: TextStyle(
-                      fontSize: 24,
-                      //fontFamily: 'Rainly'
-                    ),
-                  ),
-                  const Text(
-                    'Enter your phone number or Email and feel free to tell me what you want. We will contact you as soone as possible.',
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 10,),
-                  Material(
-                    elevation: 10,
-                    child: SizedBox(
-                      width: screenSize.width,
-                      height: 60,
-                      child: TextField(
-                        controller: phoneController,
-                        cursorColor: Colors.grey[700],
-                        decoration: const InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          hintText: 'Phone number or Email address',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          Stack(
+            children: [
+              Image.asset(
+                "images/FRANKFURT.png",
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+              Opacity(
+                opacity: 0.8,
+                child: Container(
+                  width: double.infinity,
+                  height: 200,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 200,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children:  [
+                     const Text(
+                        "Contact us",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 10,),
-                  Material(
-                    elevation: 10,
-                    child: SizedBox(
-                      width: screenSize.width,
-                      height: 60,
-                      child: TextField(
-                        controller: projectController,
-                        cursorColor: Colors.grey[700],
-                        decoration: const InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          hintText: "How can I help you ?",
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      const Text(
+                        "Our regional team are ready to help you, get in touch today.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          //fontSize: 18,
                         ),
                       ),
-                    ),
-                  ),
-                  if(textFieldError)
-                  const Text(
-                    'Enter both phone number/email address and your project idea',
-                    style: TextStyle(
-                      color: Colors.red
-                    ),
-                  ),
-                  const SizedBox(height: 20,),
-                  InkWell(
-                    onTap: (){
-                      onSendNow();
-                    },
-                    child: Container(
-                      width: screenSize.width ,
-                      height: 60,
-                      color: Colors.black,
-                      child: const Center(
-                        child: Text(
-                          'Send Now',
+                      InkWell(
+                        onTap: () async{
+                          try{
+                            final Uri params = Uri(
+                              scheme: 'mailto',
+                              path: 'projects@argendi.com',
+                            );
+                            if (await canLaunchUrl(params)) {
+                              await launchUrl(params);
+                            } else {
+                              print( 'Could not launch $params');
+                            }
+                          }
+                          catch(e){
+                            print(e);
+                          }
+                        },
+                        child: const Text(
+                          "Email: projects@argendi.com",
                           style: TextStyle(
-                            fontSize: 25,
-                            //fontWeight: FontWeight.bold,
-                            fontFamily: "Rainly",
-                            color: Colors.white
+                            color: Colors.white,
+                            //fontSize: 18,
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 50,),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Material(
+                elevation: 8,
+                child: Image.asset(
+                  "images/germany.jpg",
+                  width: 280,
+                  height: 330,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 20,),
+              const Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Hamburg, Germany",
+                    style: TextStyle(
+                      fontSize: 24,
+                      height: 1
                     ),
+                  ),
+                  Text(
+                    "Rudolf-Roß-Allee, Hamburg, Germany",
+                    style: TextStyle(),
+                  ),
+                  Text(
+                    "Call: (+49) 1573 1390129",
+                    style: TextStyle(),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
-          const Spacer(),
-          SizedBox(
-            width: screenSize.width,
-            child: const Bottom(
-              inContactUs: true,
-            ),
+          const SizedBox(height: 50,),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+              Material(
+                elevation: 8,
+                child: Image.asset(
+                  "images/egypt.jpg",
+                  width: 280,
+                  height: 330,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 20,),
+              const Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Cairo, Egypt",
+                    style: TextStyle(
+                      fontSize: 22,
+                      height: 1
+                    ),
+                  ),
+                  Text(
+                    "Maadi, Cairo, Egypt",
+                    style: TextStyle(),
+                  ),
+                  Text(
+                    "Call: (+20) 1227701988",
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+              
+            ],
+          ),
+          const SizedBox(height: 50,),
+          //const Spacer(),
+          const Bottom(
+            //inContactUs: true,
           ),
         ],
       ),

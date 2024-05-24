@@ -118,7 +118,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
       body: ListView(
         controller: scrollController,
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 300,
             child: Stack(
@@ -203,7 +203,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(height: 50,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -241,7 +241,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(height: 50,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -280,7 +280,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(height: 50,),
           const Bottom(),
         ],
       ),
@@ -289,7 +289,6 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     scrollController.dispose();
   }
