@@ -21,7 +21,7 @@ class _HeaderState extends State<Header> with TickerProviderStateMixin{
         Padding(
           padding: const EdgeInsets.only(bottom: 30),
           child: Image.asset(
-            'images/developer_team.jpg',
+            'images/developer_team_mobile.jpg',
             width: double.infinity,
             height: 380,
             fit: BoxFit.cover,

@@ -270,7 +270,7 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset(
-                  "images/p1_mockup.png",
+                  "images/p1_mockup_mobile.png",
                   width: 280,
                 ),
                 const SizedBox(height: 10,),
@@ -304,7 +304,7 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
               children: [
                 
                 Image.asset(
-                  "images/p3_mockup.png",
+                  "images/p3_mockup_mobile.png",
                   width: 300,
                 ),
                 const Column(
@@ -337,7 +337,7 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset(
-                  "images/sport_mockup.png",
+                  "images/sport_mockup_mobile.png",
                   width: 280,
                 ),
                 const Column(

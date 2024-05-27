@@ -217,7 +217,7 @@ class _ContactUsScreenState extends State<ContactUsMobileScreen> {
           Stack(
             children: [
               Image.asset(
-                "images/FRANKFURT.png",
+                "images/FRANKFURT_mobile.png",
                 width: double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
@@ -290,7 +290,7 @@ class _ContactUsScreenState extends State<ContactUsMobileScreen> {
               Material(
                 elevation: 8,
                 child: Image.asset(
-                  "images/germany.jpg",
+                  "images/germany_mobile.jpg",
                   width: 280,
                   height: 330,
                   fit: BoxFit.cover,
@@ -328,7 +328,7 @@ class _ContactUsScreenState extends State<ContactUsMobileScreen> {
               Material(
                 elevation: 8,
                 child: Image.asset(
-                  "images/egypt.jpg",
+                  "images/egypt_mobile.jpg",
                   width: 280,
                   height: 330,
                   fit: BoxFit.cover,

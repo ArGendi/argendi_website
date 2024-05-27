@@ -193,7 +193,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
                 Material(
                   elevation: 10,
                   child: Image.asset(
-                    'images/girl.jpg',
+                    'images/girl_mobile.jpg',
                     //width: 350,
                     height: 450,
                     fit: BoxFit.cover,
@@ -232,7 +232,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
                 Material(
                   elevation: 10,
                   child: Image.asset(
-                    'images/inspection.jpg',
+                    'images/inspection_mobile.jpg',
                     //width: 350,
                     height: 470,
                     fit: BoxFit.cover,
@@ -270,7 +270,7 @@ class _AboutMobileScreenState extends State<AboutMobileScreen> {
                 Material(
                   elevation: 10,
                   child: Image.asset(
-                    'images/look_ahead.jpg',
+                    'images/look_ahead_mobile.jpg',
                     //width: 350,
                     height: 450,
                     fit: BoxFit.cover,
